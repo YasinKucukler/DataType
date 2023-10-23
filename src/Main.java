@@ -1,4 +1,3 @@
-import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 import java.math.BigInteger;
@@ -17,8 +16,7 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         int n = input.nextInt();
-        boolean checkIfTheNumberFitsAnyOfThem = false;
-        List<BigDecimal> bigDecimalList = new ArrayList<BigDecimal>();
+        List<BigDecimal> bigDecimalList = new ArrayList<>();
 
         // Consume the newline character left by nextInt()
         input.nextLine();
@@ -33,7 +31,8 @@ public class Main {
         for(int i = 0; i < n; i++)
         {
             BigDecimal currentValue = bigDecimalList.get(i);
-            if (currentValue.compareTo(new BigDecimal(minLongValue)) >= 0 && currentValue.compareTo(new BigDecimal(maxLongValue)) <= 0) {
+            boolean b = currentValue.compareTo(new BigDecimal(minLongValue)) >= 0 && currentValue.compareTo(new BigDecimal(maxLongValue)) <= 0;
+            if (b) {
                 System.out.println(currentValue + " can be fitted in:");
                 if (currentValue.compareTo(new BigDecimal(minByteValue)) >= 0 && currentValue.compareTo(new BigDecimal(maxByteValue)) <= 0) {
                     System.out.println("* byte");
@@ -44,10 +43,7 @@ public class Main {
                 if (currentValue.compareTo(new BigDecimal(minIntValue)) >= 0 && currentValue.compareTo(new BigDecimal(maxIntValue)) <= 0) {
                     System.out.println("* int");
                 }
-                if (currentValue.compareTo(new BigDecimal(minLongValue)) >= 0 && currentValue.compareTo(new BigDecimal(maxLongValue)) <= 0) {
                     System.out.println("* long");
-                    checkIfTheNumberFitsAnyOfThem = true;
-                }
             }
             else{
                 System.out.println(currentValue + " can't be fitted anywhere.");
